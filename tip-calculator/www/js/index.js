@@ -16,24 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-(function($) {
-    "use strict";
 
-    var tipPercent = 0.15;
+//var calcTip = document.getElementById("calcTip");
+//calcTip.addEventListener("touchend", calculate, false);
 
-    var calcTip = function() {
-        var billAmt = Number($('#billAmount').val());
-        var tipAmt = billAmt * tipPercent;
-        var totalAmt = billAmt + tipAmt;
-        $('#tipAmount').text('$' + tipAmt.tofixed(2));
-        $('#totalAmount').text('$' + totalAmt.toFixed(2));
-    };
-
-    $(document).on("ready", function() {
-        $('#calcTip').on('click', calcTip);
-    });
-}
-((jQuery);
+var calculate = function() {
+    var bill = document.getElementById("billAmount").value;
+    var tip = document.getElementById("tipPercent").value;
+    document.getElementById("tipAmount").innerHTML = ("$" + (bill * tip).toFixed(2));
+    var total = ((bill * tip) + bill).toFixed(2);
+    document.getElementById("totalAmount").innerHTML = ("$" + total);
+};
 
 var app = {
     // Application Constructor
